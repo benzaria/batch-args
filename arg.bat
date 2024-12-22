@@ -5,7 +5,7 @@ chcp 65001 >nul
 
 call :_parse_ %*
 
-:: access the variables here
+:: access the variables in main code
 :: echo user: !user!
 :: echo password: !password!
 :: echo action: !action!
@@ -14,20 +14,6 @@ call :_parse_ %*
 endlocal
 goto :eof
 
-:_label_
-    echo best-practice: !best-practice!
-    exit /b 0
-
-:_help_
-    echo Usage: %~n0 [Options]
-    echo.
-    echo Options:
-    echo   -u, --user ^<user^>          Set the user name
-    echo   -p, --password ^<password^>  Set the password
-    echo   -a, --action ^<action^> ...  Set the action
-    echo   -v, --version              Show the version
-    echo   -h, --help                 Show this help message
-    exit /b 0
 
 :: Arguments Parser v1.0.0 by benzaria
 :_parse_  args => _args_
@@ -102,3 +88,27 @@ goto :eof
     :--help
         call :_help_
         exit /b 0
+
+:: functions
+:_label_
+    echo best-practice: !best-practice!
+    exit /b 0
+
+:_save-pass_
+    echo password: !password! is saved
+    exit /b 0
+
+:_do-action_
+    echo action, permission, force: !action!, !permission!, !force!
+    exit /b 0
+
+:_help_
+    echo Usage: %~n0 [Options]
+    echo.
+    echo Options:
+    echo   -u, --user ^<user^>          Set the user name
+    echo   -p, --password ^<password^>  Set the password
+    echo   -a, --action ^<action^> ...  Set the action
+    echo   -v, --version              Show the version
+    echo   -h, --help                 Show this help message
+    exit /b 0
