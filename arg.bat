@@ -49,7 +49,7 @@ goto :eof
         :: make sure to make the order of the index in reverse.
         :: e.g. -bd value-1 value-2 => next[2]=variable-1=value-1, next[1]=variable-2=value-2
         set "run=_label_" || rem call :_label_
-        :: call a label function now or wait for the varialble to be set
+        :: call a label function now or wait for the defined varialbles to be set
         set "best-practice=true"
         :: optional, set the flag as part of the arguments to call some function later
         exit /b 0
@@ -63,8 +63,8 @@ goto :eof
         
     :-p
     :--password
-        set /a n = 2
-        set "next[2]=password"
+        set /a n = 1
+        set "next[1]=password"
         set "run=_save-pass_"
         exit /b 0
         
